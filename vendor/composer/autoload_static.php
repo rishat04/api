@@ -7,36 +7,41 @@ namespace Composer\Autoload;
 class ComposerStaticInit5534d32349339bec22d82e4c73382961
 {
     public static $prefixLengthsPsr4 = array (
-        'C' => 
+        'A' => 
         array (
-            'Core\\Router\\' => 12,
-            'Core\\Core\\IController\\' => 22,
-            'Core\\Core\\DataBase\\' => 19,
-            'Core\\Controllers\\Markers\\' => 25,
-            'Core\\Controllers\\Comments\\' => 26,
+            'Api\\Router\\' => 11,
+            'Api\\Models\\Markers\\' => 19,
+            'Api\\Core\\IController\\' => 21,
+            'Api\\Core\\DataBase\\' => 18,
+            'Api\\Controllers\\Markers\\' => 24,
+            'Api\\Controllers\\Comments\\' => 25,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Core\\Router\\' => 
+        'Api\\Router\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/core',
+            0 => __DIR__ . '/../..' . '/api',
         ),
-        'Core\\Core\\IController\\' => 
+        'Api\\Models\\Markers\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/core/core',
+            0 => __DIR__ . '/../..' . '/core/models',
         ),
-        'Core\\Core\\DataBase\\' => 
+        'Api\\Core\\IController\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/core/core',
+            0 => __DIR__ . '/../..' . '/api/core',
         ),
-        'Core\\Controllers\\Markers\\' => 
+        'Api\\Core\\DataBase\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/core/controllers',
+            0 => __DIR__ . '/../..' . '/api/core',
         ),
-        'Core\\Controllers\\Comments\\' => 
+        'Api\\Controllers\\Markers\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/core/controllers',
+            0 => __DIR__ . '/../..' . '/api/controllers',
+        ),
+        'Api\\Controllers\\Comments\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/api/controllers',
         ),
     );
 

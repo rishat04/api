@@ -1,6 +1,6 @@
 <?php
 
-  namespace Core\Router;
+  namespace Api\Router;
 
 
   class Router {
@@ -14,7 +14,7 @@
 
         $route = $route[0];
         
-        include 'core/core/routes.php';
+        include 'api/core/routes.php';
 
         $controller_path = $routes[$route];
         $action = explode('/', $route)[2];

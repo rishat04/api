@@ -1,8 +1,8 @@
 <?php
 
-  namespace Core\Controllers\Comments;
+  namespace Api\Controllers\Comments;
 
-  use Core\Core\IController;
+  use Api\Core\IController;
 
   class Comments {
 

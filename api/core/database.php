@@ -1,5 +1,5 @@
 <?php
-  namespace Core\Core\Database;
+  namespace Api\Core\Database;
 
   class DataBase {
   

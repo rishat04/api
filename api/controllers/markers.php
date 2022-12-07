@@ -1,9 +1,9 @@
 <?php
 
-  namespace Core\Controllers\Markers;
+  namespace Api\Controllers\Markers;
 
-  use Core\Core\IController;
-  use Core\Models\Markers\MarkerDB as MarkerDB;
+  use Api\Core\IController;
+  use Api\Models\Markers\MarkerDB;
 
   class Markers {
 
@@ -23,7 +23,7 @@
       //   $title, $author_id, $first_comment, $position
       // ]);
 
-      echo json_encode(['created' => true]);
+      echo json_encode(['created' => true], true);
       exit;
     }
 
