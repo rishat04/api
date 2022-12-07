@@ -1,0 +1,20 @@
+{
+    "name": "vendor/api",
+    "description": "api for rifat",
+    "autoload": {
+        "psr-4": {
+            "Core\\Router\\": "core/",
+            "Core\\Core\\DataBase\\": "core/core/",
+            "Core\\Core\\IController\\": "core/core/",
+            "Core\\Controllers\\Comments\\": "core/controllers",
+            "Core\\Controllers\\Markers\\": "core/controllers"
+        }
+    },
+    "authors": [
+        {
+            "name": "Rishat"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
