@@ -19,7 +19,7 @@
     
     abstract public function get($project_id);
     
-    abstract public function first($query);
+    abstract public function one($query);
   }
 
 ?>

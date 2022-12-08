@@ -27,7 +27,7 @@
       ]);
 
       $marker_id = $this->model->pdo->lastInsertId();
-      $lastAdded = $this->model->first($marker_id);
+      $lastAdded = $this->model->one($marker_id);
 
       echo json_encode($lastAdded);
       exit;
@@ -41,13 +41,24 @@
       exit;
     }
 
-    public function update() {}
+    public function update() {
+      $json = file_get_contents('php://input');
+      $data = json_decode($json);
+      $values = [
+        ":position" => $data->position,
+        ":marker_id" => $data->marker_id
+      ];
+      $this->model->update($values);
+    }
 
-    public function delete() {}
-
-    public function first() {
+    public function delete() {
       $marker_id = $_GET['marker_id'];
-      $result = $this->model->first($marker_id);
+      $this->model->delete($marker_id);
+    }
+
+    public function one() {
+      $marker_id = $_GET['marker_id'];
+      $result = $this->model->one($marker_id);
 
       echo json_encode($result);
       exit;
