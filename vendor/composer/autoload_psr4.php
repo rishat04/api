@@ -6,10 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Api\\Router\\' => array($baseDir . '/api'),
-    'Api\\Models\\Markers\\' => array($baseDir . '/core/models'),
-    'Api\\Core\\IController\\' => array($baseDir . '/api/core'),
-    'Api\\Core\\DataBase\\' => array($baseDir . '/api/core'),
-    'Api\\Controllers\\Markers\\' => array($baseDir . '/api/controllers'),
-    'Api\\Controllers\\Comments\\' => array($baseDir . '/api/controllers'),
+    'Api\\' => array($baseDir . '/api'),
 );

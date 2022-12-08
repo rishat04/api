@@ -1,7 +1,6 @@
 <?php
 
-  namespace Api\Router;
-
+  namespace Api;
 
   class Router {
 
@@ -19,9 +18,9 @@
         $controller_path = $routes[$route];
         $action = explode('/', $route)[2];
 
-
         if (class_exists($controller_path)) {
           $controller = new $controller_path;
+
           if (method_exists($controller, $action)) {
             $controller->$action();
           }

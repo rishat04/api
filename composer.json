@@ -3,12 +3,7 @@
     "description": "api for rifat",
     "autoload": {
         "psr-4": {
-            "Api\\Router\\": "api/",
-            "Api\\Core\\DataBase\\": "api/core/",
-            "Api\\Core\\IController\\": "api/core/",
-            "Api\\Controllers\\Comments\\": "api/controllers/",
-            "Api\\Controllers\\Markers\\": "api/controllers/",
-            "Api\\Models\\Markers\\": "core/models/"
+            "Api\\": "api/"
         }
     },
     "authors": [

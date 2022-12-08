@@ -1,9 +1,9 @@
 <?php
-  namespace Api\Core\Database;
+  namespace Api\Core;
 
-  class DataBase {
+  abstract class DataBase {
   
-    private $pdo;
+    public $pdo;
     protected $table_name;
     
     public function __construct($table_name) {
@@ -11,32 +11,15 @@
       $this->table_name = $table_name;
     }
 
-    public function create($values) {
-      $stmt = $this->pdo->prepare("INSERT INTO $this->table_name(title, author_id, first_comment, position) VALUES({implode(',', $values)})");
-      $stmt->execute();
-    }
+    abstract public function create($values);
 
-    public function delete($condition) {
-      $stmt = $this->pdo->prepare("DELETE FROM $this->table_name WHERE $condition");
-      $stmt->execute();
-    }
+    abstract public function delete($condition);
 
-    public function update($condition) {
-      //$stmt = $this->pdo->prepare("UPDATE $this->table_name SET $condition where ");
-      //$stmt->execute();
-    }
+    abstract public function update($condition);
     
-    public function get($query) {
-      $stmt = $this->pdo->prepare($query);
-      $stmt->execute();
-      return $stmt->fetchAll();
-    }
+    abstract public function get($project_id);
     
-    public function first($query) {
-      $stmt = $this->pdo->prepare($query);
-      $stmt->execute();
-      return $stmt->fetch(\PDO::FETCH_ASSOC);
-    } 
+    abstract public function first($query);
   }
 
 ?>

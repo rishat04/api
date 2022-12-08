@@ -1,10 +1,10 @@
 <?php
 
-  namespace Api\Controllers\Comments;
+  namespace Api\Controllers;
 
   use Api\Core\IController;
 
-  class Comments {
+  class Comments{
 
     public function create() {}
 

@@ -9,39 +9,14 @@ class ComposerStaticInit5534d32349339bec22d82e4c73382961
     public static $prefixLengthsPsr4 = array (
         'A' => 
         array (
-            'Api\\Router\\' => 11,
-            'Api\\Models\\Markers\\' => 19,
-            'Api\\Core\\IController\\' => 21,
-            'Api\\Core\\DataBase\\' => 18,
-            'Api\\Controllers\\Markers\\' => 24,
-            'Api\\Controllers\\Comments\\' => 25,
+            'Api\\' => 4,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Api\\Router\\' => 
+        'Api\\' => 
         array (
             0 => __DIR__ . '/../..' . '/api',
-        ),
-        'Api\\Models\\Markers\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/core/models',
-        ),
-        'Api\\Core\\IController\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/api/core',
-        ),
-        'Api\\Core\\DataBase\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/api/core',
-        ),
-        'Api\\Controllers\\Markers\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/api/controllers',
-        ),
-        'Api\\Controllers\\Comments\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/api/controllers',
         ),
     );
 

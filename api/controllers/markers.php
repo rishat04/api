@@ -1,9 +1,8 @@
 <?php
 
-  namespace Api\Controllers\Markers;
+  namespace Api\Controllers;
 
-  use Api\Core\IController;
-  use Api\Models\Markers\MarkerDB;
+  use Api\Models\MarkerDB;
 
   class Markers {
 
@@ -14,24 +13,45 @@
     }
 
     public function create() {
-      // $title = $_POST['title'];
-      // $author_id = $_POST['author_id'];
-      // $first_comment = $_POST['comment'];
-      // $position = $_POST['position'];
+      $json = file_get_contents('php://input');
+      $data = json_decode($json);
+      $title          = $data->title;
+      $author_id      = $data->authorId;
+      $first_comment  = $data->firstComment;
+      $position       = json_encode($data->position);
+      $project_id     = $data->projectId;
+      $date           = $data->date;
 
-      // $this->model->create([
-      //   $title, $author_id, $first_comment, $position
-      // ]);
+      $result = $this->model->create([
+        $title, $author_id, $first_comment, $position, $project_id, $date
+      ]);
 
-      echo json_encode(['created' => true], true);
+      $marker_id = $this->model->pdo->lastInsertId();
+      $lastAdded = $this->model->first($marker_id);
+
+      echo json_encode($lastAdded);
       exit;
     }
 
-    public function get() {}
+    public function get() {
+      $project_id = $_GET['project_id'];
+      $result = $this->model->get($project_id);
+
+      echo json_encode($result);
+      exit;
+    }
 
     public function update() {}
 
     public function delete() {}
+
+    public function first() {
+      $marker_id = $_GET['marker_id'];
+      $result = $this->model->first($marker_id);
+
+      echo json_encode($result);
+      exit;
+    }
 
   }
 
