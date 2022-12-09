@@ -6,25 +6,33 @@
 
   class CommentDB extends DataBase {
 
-    public function get($query) {
-
+    public function get($values) {
+      $stmt = $this->pdo->prepare("SELECT * FROM $this->table_name WHERE markerId=?");
+      $stmt->execute($values);
+      return $stmt->fetchAll();
     }
 
-    public function create($query) {
-
+    public function create($values) {
+      $stmt = $this->pdo->prepare("INSERT INTO $this->table_name(comment, date, authorId, markerId) VALUES(?,?,?,?)");
+      $res = $stmt->execute($values);
+      return $res ? true : false;
     }
 
-    public function update($query) {
-
+    public function update($values) {
+      $stmt = $this->pdo->prepare("UPDATE $this->table_name set comment = ?, date= ? where commentId=?");
+      $stmt->execute($values);
     }
 
-    public function delete($query) {
-
+    public function delete($values) {
+      $stmt = $this->pdo->prepare("DELETE FROM $this->table_name where commentId=?");
+      $stmt->execute($values);
     }
 
-    public function one($query) {
-
-    }
+    public function one($values) {
+      $stmt = $this->pdo->prepare("SELECT * FROM $this->table_name WHERE commentId=?");
+      $stmt->execute($values);
+      return $stmt->fetch(\PDO::FETCH_ASSOC);
+    } 
 
   }
 

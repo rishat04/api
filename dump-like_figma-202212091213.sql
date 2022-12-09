@@ -23,11 +23,12 @@ DROP TABLE IF EXISTS `comments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `comments` (
-  `comment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `commentId` int(11) NOT NULL AUTO_INCREMENT,
   `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `author_id` int(11) NOT NULL,
+  `authorId` int(11) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`comment_id`)
+  `markerId` int(11) NOT NULL,
+  PRIMARY KEY (`commentId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -48,14 +49,15 @@ DROP TABLE IF EXISTS `markers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `markers` (
-  `marker_id` int(11) NOT NULL AUTO_INCREMENT,
+  `markerId` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp(),
-  `author_id` int(11) NOT NULL,
-  `first_comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `authorId` int(11) NOT NULL,
+  `firstComment` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `position` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`marker_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `projectId` int(11) NOT NULL,
+  PRIMARY KEY (`markerId`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,6 +66,7 @@ CREATE TABLE `markers` (
 
 LOCK TABLES `markers` WRITE;
 /*!40000 ALTER TABLE `markers` DISABLE KEYS */;
+INSERT INTO `markers` VALUES (6,'#Этаж 1, прихожая','08.12.2022',42,'dasfasdf','{\"x\":326,\"y\":176}',0),(7,'#Этаж 1, прихожая','08.12.2022',42,'asdfasdf','{\"x\":356,\"y\":181}',0),(8,'#Этаж 1, прихожая','08.12.2022',42,'asdfasdf','{\"x\":256,\"y\":179}',0),(9,'#Этаж 1, прихожая','08.12.2022',42,'sdfgsdfg','{\"x\":341,\"y\":208}',0),(10,'#Этаж 1, прихожая','08.12.2022',42,'sdfgsdfgsdfg','{\"x\":399,\"y\":193}',0),(11,'#Этаж 1, прихожая','08.12.2022',42,'sdfgsdfg','{\"x\":446,\"y\":212}',0),(12,'#Этаж 1, прихожая','08.12.2022',42,'adfasfadf','{\"x\":307,\"y\":218}',0),(13,'#Этаж 1, прихожая','08.12.2022',42,'asdfasdf','{\"x\":226,\"y\":80}',0),(14,'#Этаж 1, прихожая','08.12.2022',42,'asdfasdf','{\"x\":390,\"y\":168}',0),(16,'#Этаж 1, прихожая','08.12.2022',42,'asdfsasdf','{\"x\":451,\"y\":155}',0),(17,'#Этаж 1, прихожая','08.12.2022',42,'qwerqwer','{\"x\":234,\"y\":162}',0);
 /*!40000 ALTER TABLE `markers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,10 +160,10 @@ DROP TABLE IF EXISTS `projects`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `projects` (
-  `project_id` int(11) NOT NULL AUTO_INCREMENT,
+  `projectId` int(11) NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL DEFAULT current_timestamp(),
-  `author_id` int(11) NOT NULL,
-  PRIMARY KEY (`project_id`)
+  `authorId` int(11) NOT NULL,
+  PRIMARY KEY (`projectId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -183,8 +186,8 @@ DROP TABLE IF EXISTS `sub_markers`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sub_markers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `marker_id` int(11) NOT NULL,
+  `commentId` int(11) NOT NULL,
+  `markerId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -289,4 +292,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-07 16:07:52
+-- Dump completed on 2022-12-09 12:13:51
