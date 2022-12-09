@@ -20,16 +20,15 @@
       $first_comment  = $data->firstComment;
       $position       = json_encode($data->position);
       $project_id     = $data->projectId;
-      $date           = $data->date;
+      $created        = $data->created;
 
       $result = $this->model->create([
-        $title, $author_id, $first_comment, $position, $project_id, $date
+        $title, $author_id, $first_comment, $position, $project_id, $created
       ]);
 
-      // $marker_id = $this->model->pdo->lastInsertId();
-      // $lastAdded = $this->model->one([$marker_id, $project_id]);
-
-      // echo json_encode($lastAdded);
+      $marker_id = $this->model->pdo->lastInsertId();
+      $lastAdded = $this->model->one([$marker_id, $project_id]);
+      echo json_encode($lastAdded);
       exit;
     }
 

@@ -11,8 +11,15 @@
     protected $password = "root";
     
     public function __construct($table_name) {
-      $this->pdo = new \PDO("mysql:host=$host;dbname=$db", $user, $password);
-      $this->table_name = $table_name;
+      try {
+        $this->pdo = new \PDO("mysql:host=$this->host;dbname=$this->db", $this->user, $this->password);
+        $this->pdo->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
+        $this->pdo->setAttribute(\PDO::ATTR_STRINGIFY_FETCHES, false);
+        // $this->pdo = new \PDO("mysql:host=localhost;dbname=like_figma", 'root', 'root');
+        $this->table_name = $table_name;
+      } catch (Exception $e) {
+        echo 'Caught exception: ',  $e->getMessage(), "\n";
+      }
     }
 
     abstract public function create($values);

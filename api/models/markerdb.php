@@ -7,7 +7,7 @@
   class MarkerDB extends DataBase {
     
     public function create($values) {
-      $stmt = $this->pdo->prepare("INSERT INTO $this->table_name(title, author_id, firstComment, position, projectId, date) VALUES(?,?,?,?,?,?)");
+      $stmt = $this->pdo->prepare("INSERT INTO $this->table_name (title, authorId, firstComment, position, projectId, created) VALUES(?,?,?,?,?,?)");
       $res = $stmt->execute($values);
       return $res ? true : false;
     }
@@ -23,9 +23,10 @@
     }
     
     public function get($project_id) {
+      // $stmt = $this->pdo->prepare("SELECT * FROM $this->table_name LEFT JOIN sub_marker on $this->table_name.markerId=sub_marker.markerId WHERE projectId=:projectId");
       $stmt = $this->pdo->prepare("SELECT * FROM $this->table_name WHERE projectId=:projectId");
       $stmt->execute([':projectId' => $project_id]);
-      return $stmt->fetchAll($this->pdo::FETCH_CLASS);
+      return $stmt->fetchAll(\PDO::FETCH_CLASS);
     }
     
     public function one($values) {
