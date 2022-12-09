@@ -1,6 +1,6 @@
 <?php
 
-  namespace Api\Core;
+  namespace Api\Interfaces;
 
   interface IController {
 

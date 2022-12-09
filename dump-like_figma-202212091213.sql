@@ -26,7 +26,7 @@ CREATE TABLE `comments` (
   `commentId` int(11) NOT NULL AUTO_INCREMENT,
   `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `authorId` int(11) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp(),
+  `date` date NOT NULL,
   `markerId` int(11) NOT NULL,
   PRIMARY KEY (`commentId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -103,7 +103,7 @@ DROP TABLE IF EXISTS `planner_objects`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `planner_objects` (
   `id` int(11) NOT NULL COMMENT 'Идентификатор',
-  `dateCreate` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Дата создания',
+  `dateCreate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'Дата создания',
   `dateUpdate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'Дата последнего редактирования',
   `groupId` int(11) NOT NULL COMMENT 'Идентификатор группы',
   `alias` varchar(100) NOT NULL COMMENT 'Кодовое обозначение',
@@ -161,7 +161,7 @@ DROP TABLE IF EXISTS `projects`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `projects` (
   `projectId` int(11) NOT NULL AUTO_INCREMENT,
-  `date` date NOT NULL DEFAULT current_timestamp(),
+  `date` date NOT NULL DEFAULT '0000-00-00 00:00:00',
   `authorId` int(11) NOT NULL,
   PRIMARY KEY (`projectId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -2,7 +2,7 @@
 
   namespace Api\Controllers;
 
-  use Api\Core\IController;
+  use Api\Interfaces\IController;
   use Api\Models\CommentDB;
 
   class Comments {

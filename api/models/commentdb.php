@@ -9,7 +9,7 @@
     public function get($values) {
       $stmt = $this->pdo->prepare("SELECT * FROM $this->table_name WHERE markerId=?");
       $stmt->execute($values);
-      return $stmt->fetchAll();
+      return $stmt->fetchAll($this->pdo::FETCH_CLASS);
     }
 
     public function create($values) {

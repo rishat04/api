@@ -5,9 +5,13 @@
   
     public $pdo;
     protected $table_name;
+    protected $host     = "localhost";
+    protected $db       = "like_figma";
+    protected $user     = "root";
+    protected $password = "root";
     
     public function __construct($table_name) {
-      $this->pdo = new \PDO('mysql:host=localhost;dbname=like_figma', 'root', 'root');
+      $this->pdo = new \PDO("mysql:host=$host;dbname=$db", $user, $password);
       $this->table_name = $table_name;
     }
 

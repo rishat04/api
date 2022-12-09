@@ -25,7 +25,7 @@
     public function get($project_id) {
       $stmt = $this->pdo->prepare("SELECT * FROM $this->table_name WHERE projectId=:projectId");
       $stmt->execute([':projectId' => $project_id]);
-      return $stmt->fetchAll();
+      return $stmt->fetchAll($this->pdo::FETCH_CLASS);
     }
     
     public function one($values) {
