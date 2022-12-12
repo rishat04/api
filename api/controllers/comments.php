@@ -22,20 +22,18 @@
     }
 
     public function create() {
-      $json = file_get_contents("php://input");
-      $fields = json_decode($json);
-      $comment  = $fields->comment;
-      $date     = $fields->date;
+      $json     = file_get_contents("php://input");
+      $fields   = json_decode($json);
+      $text     = $fields->text;
+      $created  = $fields->created;
       $authorId = $fields->authorId;
       $markerId = $fields->markerId;
+
       $result = $this->model->create([
-        $comment, $date, $authorId, $markerId
+        $text, $authorId, $markerId, $created
       ]);
 
-      $commentId = $this->model->pdo->lastInsertId();
-      $lastAdded = $this->model->one($commentId);
-
-      echo json_encode($lastAdded);
+      echo json_encode($result);
       exit;
     }
 

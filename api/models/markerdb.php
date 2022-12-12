@@ -9,7 +9,12 @@
     public function create($values) {
       $stmt = $this->pdo->prepare("INSERT INTO $this->table_name (title, authorId, firstComment, position, projectId, created) VALUES(?,?,?,?,?,?)");
       $res = $stmt->execute($values);
-      return $res ? true : false;
+      $stmt = $this->pdo->query("SELECT * FROM $this->table_name ORDER BY markerId DESC limit 1");
+      $lastRow = $stmt->fetch($this->pdo::FETCH_ASSOC);
+      if ($lastRow) {
+        return $lastRow;
+      }
+      return false;
     }
 
     public function delete($marker_id) {

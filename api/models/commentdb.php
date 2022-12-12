@@ -13,13 +13,18 @@
     }
 
     public function create($values) {
-      $stmt = $this->pdo->prepare("INSERT INTO $this->table_name(comment, date, authorId, markerId) VALUES(?,?,?,?)");
+      $stmt = $this->pdo->prepare("INSERT INTO $this->table_name (text, authorId, markerId, created) VALUES(?,?,?,?)");
       $res = $stmt->execute($values);
-      return $res ? true : false;
+      $stmt = $this->pdo->query("SELECT * FROM $this->table_name ORDER BY commentId DESC limit 1");
+      $lastRow = $stmt->fetch($this->pdo::FETCH_ASSOC);
+      if ($lastRow) {
+        return $lastRow;
+      }
+      return false;
     }
 
     public function update($values) {
-      $stmt = $this->pdo->prepare("UPDATE $this->table_name set comment = ?, date= ? where commentId=?");
+      $stmt = $this->pdo->prepare("UPDATE $this->table_name set text = ?, date= ? where commentId=?");
       $stmt->execute($values);
     }
 

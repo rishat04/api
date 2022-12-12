@@ -13,22 +13,22 @@
     }
 
     public function create() {
-      $json = file_get_contents('php://input');
-      $data = json_decode($json);
-      $title          = $data->title;
-      $author_id      = $data->authorId;
-      $first_comment  = $data->firstComment;
-      $position       = json_encode($data->position);
-      $project_id     = $data->projectId;
-      $created        = $data->created;
+      $json           = file_get_contents('php://input');
+      $fields         = json_decode($json);
+      $title          = $fields->title;
+      $author_id      = $fields->authorId;
+      $first_comment  = $fields->firstComment;
+      $position       = json_encode($fields->position);
+      $project_id     = $fields->projectId;
+      $created        = $fields->created;
 
       $result = $this->model->create([
         $title, $author_id, $first_comment, $position, $project_id, $created
       ]);
 
-      $marker_id = $this->model->pdo->lastInsertId();
-      $lastAdded = $this->model->one([$marker_id, $project_id]);
-      echo json_encode($lastAdded);
+      // $marker_id = $this->model->pdo->lastInsertId();
+      // $lastAdded = $this->model->one([$marker_id, $project_id]);
+      echo json_encode($result);
       exit;
     }
 
