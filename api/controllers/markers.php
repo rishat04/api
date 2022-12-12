@@ -49,7 +49,9 @@
 
     public function delete() {
       $marker_id = $_GET['markerId'];
-      $this->model->delete($marker_id);
+      $result = $this->model->delete($marker_id);
+      echo json_encode(["result" => $result]);
+      exit();
     }
 
     public function one() {

@@ -19,7 +19,7 @@
 
     public function delete($marker_id) {
       $stmt = $this->pdo->prepare("DELETE FROM $this->table_name WHERE markerId=?");
-      $stmt->execute([$marker_id]);
+      return $stmt->execute([$marker_id]);
     }
 
     public function update($values) {
