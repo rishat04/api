@@ -8,7 +8,7 @@
     protected $host     = "localhost";
     protected $db       = "like_figma";
     protected $user     = "root";
-    protected $password = "";
+    protected $password = "root";
     
     public function __construct($table_name) {
       try {

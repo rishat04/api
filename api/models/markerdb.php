@@ -29,8 +29,14 @@
     
     public function get($project_id) {
       // $stmt = $this->pdo->prepare("SELECT * FROM $this->table_name LEFT JOIN sub_marker on $this->table_name.markerId=sub_marker.markerId WHERE projectId=:projectId");
-      $stmt = $this->pdo->prepare("SELECT * FROM $this->table_name WHERE projectId=:projectId");
-      $stmt->execute([':projectId' => $project_id]);
+      // $stmt = $this->pdo->prepare("SELECT * FROM $this->table_name WHERE projectId=:projectId");
+      // $stmt->execute([':projectId' => $project_id]);
+      $stmt = $this->pdo->prepare(
+        "SELECT *, 
+        (SELECT COUNT(commentId) FROM comments AS c JOIN markers AS m ON m.markerId = c.markerId WHERE m.projectId=$project_id)
+        AS commentsCount FROM markers where projectId=$project_id"
+      );
+      $stmt->execute();
       return $stmt->fetchAll(\PDO::FETCH_CLASS);
     }
     
