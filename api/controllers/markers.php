@@ -17,7 +17,7 @@
       $fields         = json_decode($json);
       $title          = $fields->title;
       $author_id      = $fields->authorId;
-      $first_comment  = $fields->firstComment;
+      $first_comment  = "";
       $position       = json_encode($fields->position);
       $project_id     = $fields->projectId;
       $created        = $fields->created;
