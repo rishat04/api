@@ -30,8 +30,9 @@
     public function get($project_id) {
       $stmt = $this->pdo->prepare("
         SELECT
-          *,
-          (SELECT COUNT(*) FROM comments WHERE markerId = m.markerId) as commentsCount
+          markerId, title, created, authorId, position, projectId,
+          (SELECT COUNT(*) FROM comments WHERE markerId = m.markerId) as commentsCount,
+          (SELECT text FROM comments WHERE markerId = m.markerId LIMIT 1) as firstComment
         FROM
           markers AS m
         WHERE
