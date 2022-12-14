@@ -24,8 +24,8 @@
     }
 
     public function update($values) {
-      $stmt = $this->pdo->prepare("UPDATE $this->table_name set text = ?, date= ? where commentId=?");
-      $stmt->execute($values);
+      $stmt = $this->pdo->prepare("UPDATE $this->table_name set text = ? where commentId=?");
+      return $stmt->execute($values);
     }
 
     public function delete($values) {

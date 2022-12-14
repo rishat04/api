@@ -40,8 +40,10 @@
     public function update() {
       $json = file_get_contents('php://input');
       $data = json_decode($json);
-      $values = [$data->comment, $data->date, $data->commentId];
-      $this->model->update($values);
+      $values = [$data->commentId, $data->text];
+      $result = $this->model->update($values);
+      echo json_encode($result);
+      exit;
     }
 
     public function delete() {
