@@ -36,6 +36,10 @@
       $project_id = $_GET['projectId'];
       $result = $this->model->get($project_id);
 
+      foreach($result as $item) {
+        $item->opened = false;
+      }
+
       echo json_encode($result);
       exit;
     }
