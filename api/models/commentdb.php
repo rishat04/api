@@ -24,13 +24,26 @@
     }
 
     public function update($values) {
-      $stmt = $this->pdo->prepare("UPDATE $this->table_name set text = ? where commentId=?");
-      return $stmt->execute($values);
+      $stmt = $this->pdo->prepare("
+        UPDATE
+          $this->table_name
+        SET
+          text=:text, authorId=:authorId, created=:created
+        WHERE
+          commentId=:commentId
+      ");
+
+      $stmt->bindParam(":text", $values->text);
+      $stmt->bindParam(":authorId", $values->authorId);
+      $stmt->bindParam(":commentId", $values->commentId);
+      $stmt->bindParam(":created", $values->created);
+
+      return $stmt->execute();
     }
 
-    public function delete($values) {
-      $stmt = $this->pdo->prepare("DELETE FROM $this->table_name where commentId=?");
-      $stmt->execute($values);
+    public function remove($commentId) {
+      $stmt = $this->pdo->prepare("DELETE FROM $this->table_name where commentId=$commentId");
+      return $stmt->execute();
     }
 
     public function one($values) {

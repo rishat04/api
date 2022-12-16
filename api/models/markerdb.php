@@ -17,7 +17,7 @@
       return false;
     }
 
-    public function delete($marker_id) {
+    public function remove($marker_id) {
       $stmt = $this->pdo->prepare("DELETE FROM $this->table_name WHERE markerId=?");
       return $stmt->execute([$marker_id]);
     }

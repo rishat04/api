@@ -8,7 +8,7 @@
     protected $host     = "localhost";
     protected $db       = "like_figma";
     protected $user     = "root";
-    protected $password = "";
+    protected $password = "root";
     
     public function __construct($table_name) {
       try {
@@ -24,7 +24,7 @@
 
     abstract public function create($values);
 
-    abstract public function delete($condition);
+    abstract public function remove($condition);
 
     abstract public function update($condition);
     

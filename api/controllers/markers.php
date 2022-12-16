@@ -51,9 +51,9 @@
       $this->model->update($values);
     }
 
-    public function delete() {
+    public function remove() {
       $marker_id = $_GET['markerId'];
-      $result = $this->model->delete($marker_id);
+      $result = $this->model->remove($marker_id);
       echo json_encode(["result" => $result]);
       exit();
     }

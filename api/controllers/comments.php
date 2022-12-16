@@ -40,15 +40,23 @@
     public function update() {
       $json = file_get_contents('php://input');
       $data = json_decode($json);
-      $values = [$data->commentId, $data->text];
-      $result = $this->model->update($values);
-      echo json_encode($result);
+      $fields   = json_decode($json);
+      $text     = $fields->text;
+      $created  = $fields->created;
+      $authorId = $fields->authorId;
+      $commentId = $fields->commentId;
+
+      echo json_encode([
+        "result" => $this->model->update($fields)
+      ]);
       exit;
     }
 
-    public function delete() {
+    public function remove() {
       $commentId = $_GET['commentId'];
-      $this->model->delete($commentId);
+      echo json_encode([
+        "result" => $this->model->remove($commentId)
+      ]);
     }
 
     public function one() {
